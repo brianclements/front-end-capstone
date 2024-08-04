@@ -5,7 +5,7 @@ const Nav = () => {
 
   return (
     <nav>
-      <ul>
+      <ul class="karla-section-title">
         <img src={textLogo} alt="Little Lemon logo"/>
         <Links/>
       </ul>

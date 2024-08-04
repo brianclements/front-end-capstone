@@ -26,8 +26,13 @@ header nav ul {
    padding: 0;
 }
 
+header nav ul img {
+  height: 3.4rem;
+}
+
 header nav ul li {
   margin: auto 0;
+  padding-top: 3px;
 }
 
 main {
@@ -45,6 +50,8 @@ nav ul {
 
 footer {
   height: 22vh;
+  background-color: var(--primary-green);
+  color: var(--highlight-gray);
 }
 
 footer h3 {
