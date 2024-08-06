@@ -1,5 +1,6 @@
 import Links from '../components/Links';
 import lemonLogo from '../assets/logos/lemon_only_logo.png';
+import './Footer.css';
 
 const Footer = () => {
   return (

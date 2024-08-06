@@ -1,0 +1,18 @@
+#bio-div {
+  width: 45%;
+}
+
+#h1 {
+  color: var(--primary-yellow);
+  margin: 0;
+}
+
+#h2 {
+  color: var(--highlight-gray);
+  margin: 0;
+}
+
+#bio-text {
+  color: var(--highlight-gray);
+  border-top: 1rem;
+}

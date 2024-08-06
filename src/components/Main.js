@@ -1,7 +1,16 @@
+import './Main.css';
+import Hero from './Hero';
+import Specials from './Specials';
+import Testimonials from './Testimonials';
+import Backstory from './Backstory';
+
 const Main = () => {
   return (
     <main>
-      Homepage
+      <Hero/>
+      <Specials/>
+      <Testimonials/>
+      <Backstory/>
     </main>
     );
 };

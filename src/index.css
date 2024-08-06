@@ -2,14 +2,17 @@
 .markazi-text-display-title {
   font-family: "Markazi Text", serif;
   font-optical-sizing: auto;
-  font-weight: 550;
+  font-weight: 520;
   font-style: normal;
+  line-height: 3rem;
 }
 .markazi-text-sub-title {
   font-family: "Markazi Text", serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+  line-height: 2rem;
+  margin-bottom: 0.8rem;
 }
 .karla-section-title {
   font-family: "Karla", sans-serif;
@@ -21,9 +24,9 @@
 .karla-lead-text {
   font-family: "Karla", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 600;
+  font-weight: 425;
   font-style: normal;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
 }
 .karla-section-category {
   font-family: "Karla", sans-serif;
@@ -51,11 +54,11 @@
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: 3.75rem;
 }
 
 h2 {
-  font-size: 3rem;
+  font-size: 2.4rem;
 }
 
 h3 {
@@ -105,23 +108,4 @@ code {
   --secondary-light: #fbdabb;
   --highlight-gray: #edefee;
   --highlight-gray-dark: #333333;
-}
-
-.primary-green {
-  color: var(--primary-green);
-}
-.primary-yellow {
-  color: var(--primary-yellow);
-}
-.secondary-dark {
-  color: var(--secondary-dark);
-}
-.secondary-light {
-  color: var(--secondary-light);
-}
-.highlight-gray {
-  color: var(--highlight-gray);
-}
-.highlight-gray-dark {
-  color: var(--highlight-gray-dark);
 }

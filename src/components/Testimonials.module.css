@@ -1,0 +1,14 @@
+#padding-div {
+  padding: 2rem 6rem;
+}
+
+#testimonials-section {
+  height: 300px;
+  background-color: var(--primary-green);
+}
+
+#h1 {
+  color: var(--highlight-gray);
+  margin: 0;
+  text-align: center;
+}

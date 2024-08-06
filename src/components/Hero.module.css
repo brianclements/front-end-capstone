@@ -1,0 +1,8 @@
+#hero-banner {
+  height: 300px;
+  background-color: var(--primary-green);
+}
+
+#padding-div {
+  padding: 2rem 6rem;
+}
