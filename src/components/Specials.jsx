@@ -1,4 +1,3 @@
-import Bio from './Bio'
 import style from "./Specials.module.css";
 
 const Specials = () => {
