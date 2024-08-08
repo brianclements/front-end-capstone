@@ -1,0 +1,13 @@
+header nav a {
+  margin: auto 0;
+}
+
+header nav ul li {
+  margin: auto 0;
+  padding-top: 3px;
+}
+
+.active {
+  color: var(--primary-green);
+  font-weight: 700;
+}

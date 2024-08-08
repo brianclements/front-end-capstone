@@ -1,5 +1,6 @@
 import textLogo from '../assets/logos/ll_logo.svg';
 import Links from '../components/Links';
+import './Nav.css';
 
 const Nav = () => {
 
