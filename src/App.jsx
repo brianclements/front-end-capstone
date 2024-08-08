@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Header from './components/Header';
-import Main from './components/Main';
-import Reservations from './components/Reservations';
+import Main from './pages/Main';
+import Reservations from './pages/Reservations';
 import Footer from './components/Footer';
 import './App.css';
 
