@@ -1,16 +1,28 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import './Links.css';
 
 const Links = () => {
   return (
     <>
       <li>
-        <Link to="/">Home</Link>
+        <NavLink 
+          to="/"
+          className={({ isActive }) =>
+            (isActive ? "active-navlink" : "navlink" )}
+        >
+          Home
+        </NavLink>
       </li>
       <li><a href="#">About</a></li>
       <li><a href="#">Menu</a></li>
       <li>
-        <Link to="/reservations">Reservations</Link>
+        <NavLink 
+          to="/reservations"
+          className={({ isActive }) =>
+            (isActive ? "active-navlink" : "navlink" )}
+        >
+          Reservations
+        </NavLink>
       </li>
       <li><a href="#">Order Online</a></li>
       <li><a href="#">Login</a></li>

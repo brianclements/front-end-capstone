@@ -7,7 +7,19 @@ header nav ul li {
   padding-top: 3px;
 }
 
-.active {
-  color: var(--primary-green);
-  font-weight: 700;
+.navlink {
+  color: black;
 }
+
+.navlink:hover {
+  text-decoration: none; 
+}
+
+.active-navlink {
+  color: var(--primary-yellow);
+  font-weight: 900;
+}
+
+.active-navlink:hover { 
+  text-decoration: none; 
+} 
