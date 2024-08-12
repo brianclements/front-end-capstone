@@ -1,8 +1,12 @@
+import Hero from '../components/Hero';
+import BookingForm from '../components/BookingForm';
+import './Reservations.css';
+
 const Reservations = () => {
 
   return (
     <main>
-      <h1>Reservations!</h1>
+      <Hero/>
     </main>
   );
 };
