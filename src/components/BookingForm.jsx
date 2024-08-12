@@ -1,21 +1,11 @@
 import { useState } from "react";
 import style from './BookingForm.module.css';
 
-const BookingForm = () => {
+const BookingForm = (props) => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [guests, setGuests] = useState("");
   const [occasion, setOccasion] = useState("");
-
-  const [availableTimes, setAvailableTimes] = useState([
-        "17:00",
-        "18:00",
-        "19:00",
-        "20:00",
-        "21:00",
-        "22:00"
-    ]
-  );
 
   const handleSubmit = (e) => {
     //Prevent default form action
@@ -52,7 +42,7 @@ const BookingForm = () => {
             value={time}
             onChange={(e) => setTime(e.target.value)}
           >
-            {availableTimes.map(time => (
+            {props.availableTimes.map(time => (
               <option key={time}>{time}</option>
             ))}
           </select>
