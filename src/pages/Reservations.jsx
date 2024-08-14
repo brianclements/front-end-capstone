@@ -2,26 +2,19 @@
 import { useReducer } from "react";
 import Hero from '../components/Hero';
 import BookingForm from '../components/BookingForm';
-import BookingFormReducer from '../components/BookingFormReducer';
-import dateReducer from '../components/dateReducer.js';
+import { dateReducer, initialState } from '../components/dateState.js';
 import './Reservations.css';
 
 
 const Reservations = () => {
 
   //////////////////////////////////////////
-  // useState
+  // useState method
   // deactivated but left here for posterity
   /*
-  const [availableTimes, setAvailableTimes] = useState([
-        "17:00",
-        "18:00",
-        "19:00",
-        "20:00",
-        "21:00",
-        "22:00"
-  ]);
-  const updateAvailableTimes = () => {
+  const [availableTimes, setAvailableTimes] = useState(initialState);
+
+  const updateTimes = () => {
     setAvailableTimes(prevState => {
       return [ ...prevState];
     });
@@ -29,11 +22,7 @@ const Reservations = () => {
   */
 
   //////////////////////////////////////////
-  // useReducer
-  const initialState = [
-    "Please select a date"
-  ];
-
+  // useReducer method
   const [availableTimes, dispatch] = useReducer(dateReducer, initialState);
 
   const updateTimes = (d) => {
@@ -45,12 +34,7 @@ const Reservations = () => {
   return (
     <main>
       <Hero/>
-      {/* deactivated but left here for posterity
-      <BookingForm availableTimes={availableTimes} updateAvailableTimes={updateAvailableTimes}/>
-      */}
-      <BookingFormReducer availableTimes={availableTimes} updateAvailableTimes={updateTimes}/>
-      {/*
-      */}
+      <BookingForm availableTimes={availableTimes} updateAvailableTimes={updateTimes}/>
     </main>
   );
 };
