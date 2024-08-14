@@ -19,8 +19,6 @@ const BookingForm = (props) => {
     //Form validation
     //TODO
 
-    // console.log(date, time, guests, occasion);
-
     //Reset Form
     setDate("");
     setTime("");
@@ -32,27 +30,46 @@ const BookingForm = (props) => {
       <form 
         id={style.bookingForm}
         onSubmit={handleSubmit}
+        aria-label="Booking Form"
       >
         <fieldset>
-          <label htmlFor="res-date">Choose date</label>
+          <label
+            id="date-label"
+            htmlFor="res-date"
+            >
+              Choose date
+          </label>
           <input 
             type="date" 
             id="res-date"
+            aria-labelledby="date-label"
             value={date}
             onChange={onDateChange}
           />
-          <label htmlFor="res-time">Choose time</label>
+          <label
+            id="time-label"
+            htmlFor="res-time"
+            >
+              Choose time
+          </label>
           <select
             id="res-time "
+            aria-labelledby="time-label"
             value={time}
             onChange={(e) => setTime(e.target.value)}
-          >
-            {props.availableTimes.map(time => (
-              <option key={time}>{time}</option>
-            ))}
+            >
+              {props.availableTimes.map(time => (
+                <option key={time}>{time}</option>
+              ))}
           </select>
-          <label htmlFor="guests">Number of guests</label>
+          <label
+            id="guests-label"
+            htmlFor="guests"
+            >
+              Number of guests
+          </label>
           <input
+            aria-labelledby="guests-label"
             type="number"
             placeholder="1"
             min="1"
@@ -61,20 +78,26 @@ const BookingForm = (props) => {
             value={guests}
             onChange={(e) => setGuests(e.target.value)}
           />
-          <label htmlFor="occasion">Occasion</label>
+          <label
+            id="occasion-label"
+            htmlFor="occasion"
+            >
+              Occasion
+          </label>
           <select
             id="occasion"
+            aria-labelledby="occation-label"
             value={occasion}
             onChange={(e) => setOccasion(e.target.value)}
-          >
+            >
               <option>Birthday</option>
               <option>Anniversary</option>
           </select>
           <button
             disabled={!date | !time | !guests | !occasion}
             type="submit"
-          >
-            Make Your Reservation
+            >
+              Make Your Reservation
           </button>
         </fieldset>
       </form>
