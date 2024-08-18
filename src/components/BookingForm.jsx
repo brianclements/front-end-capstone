@@ -86,7 +86,7 @@ const BookingForm = (props) => {
           </label>
           <select
             id="occasion"
-            aria-labelledby="occation-label"
+            aria-labelledby="occasion-label"
             value={occasion}
             onChange={(e) => setOccasion(e.target.value)}
             >
