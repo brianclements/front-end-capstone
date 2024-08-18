@@ -5,18 +5,18 @@ import textLogo from '../assets/logos/ll_logo.svg';
 
 describe('<Nav/>', () => {
   it('Should have correct navigation links', () => {
-    const { getByText } = render(
+    render(
       <MemoryRouter>
         <Nav/>
       </MemoryRouter>
     );
 
-    expect(getByText('Home')).toBeInTheDocument();
-    expect(getByText('About')).toBeInTheDocument();
-    expect(getByText('Menu')).toBeInTheDocument();
-    expect(getByText('Reservations')).toBeInTheDocument();
-    expect(getByText('Order Online')).toBeInTheDocument();
-    expect(getByText('Login')).toBeInTheDocument();
+    expect(screen.getByText('Home')).toBeInTheDocument();
+    expect(screen.getByText('About')).toBeInTheDocument();
+    expect(screen.getByText('Menu')).toBeInTheDocument();
+    expect(screen.getByText('Reservations')).toBeInTheDocument();
+    expect(screen.getByText('Order Online')).toBeInTheDocument();
+    expect(screen.getByText('Login')).toBeInTheDocument();
   });
 
   it('Logo must have valid source and alt text', () => {
