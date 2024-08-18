@@ -1,4 +1,4 @@
-import { today } from '../utils/dateHelpers';
+import { today } from '../utils/dateHelpers.js';
 
 const initialState = [
   "Please select a date"
