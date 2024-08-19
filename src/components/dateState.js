@@ -9,8 +9,8 @@ const initializeTimes = (state, lookup) => {
   return fetchAPI(lookup.date);
 };
 
-const parseForm = (e) => {
-  return submitAPI(e.target);
+const parseForm = (form) => {
+  return submitAPI(form);
 };
 
 export { initializeTimes, initialState, parseForm };
