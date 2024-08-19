@@ -19,6 +19,8 @@ const BookingForm = (props) => {
     //Form validation
     //TODO
 
+    props.parseForm(e);
+
     //Reset Form
     setDate("");
     setTime("");

@@ -11,3 +11,7 @@ export const today = () => {
 export const tomorrow = () => {
   return `${currentYear}-${currentMonth}-${tomorrowDay}`;
 };
+
+export const dateAsNum = (dateStr) => {
+  return Number(dateStr.replaceAll('-', ''));
+};

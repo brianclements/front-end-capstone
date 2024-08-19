@@ -2,7 +2,7 @@
 import { useReducer } from "react";
 import Hero from '../components/Hero';
 import BookingForm from '../components/BookingForm';
-import { dateReducer, initialState } from '../components/dateState.js';
+import { initializeTimes, initialState, parseForm } from '../components/dateState.js';
 import './Reservations.css';
 
 
@@ -23,7 +23,7 @@ const Reservations = () => {
 
   //////////////////////////////////////////
   // useReducer method
-  const [availableTimes, dispatch] = useReducer(dateReducer, initialState);
+  const [availableTimes, dispatch] = useReducer(initializeTimes, initialState);
 
   const updateTimes = (d) => {
     dispatch({
@@ -34,7 +34,11 @@ const Reservations = () => {
   return (
     <main>
       <Hero/>
-      <BookingForm availableTimes={availableTimes} updateAvailableTimes={updateTimes}/>
+      <BookingForm 
+        availableTimes={availableTimes}
+        updateAvailableTimes={updateTimes}
+        parseForm={parseForm}
+      />
     </main>
   );
 };
