@@ -53,17 +53,23 @@ describe('Form interactivity in <Reservations/>', () => {
 
     fireEvent.change(datePicker, {target: {value: today()}});
     fireEvent.change(timePicker, {target: {value: '18:00'}});
+    fireEvent.change(timePicker, {target: {value: '18:30'}});
+    fireEvent.change(timePicker, {target: {value: '17:00'}});
     expect(submitButton)
       .toBeDisabled();
 
     fireEvent.change(datePicker, {target: {value: today()}});
     fireEvent.change(timePicker, {target: {value: '18:00'}});
+    fireEvent.change(timePicker, {target: {value: '18:30'}});
+    fireEvent.change(timePicker, {target: {value: '17:00'}});
     fireEvent.change(noGuests, {target: {value: 1}});
     expect(submitButton)
       .toBeDisabled();
 
     fireEvent.change(datePicker, {target: {value: today()}});
     fireEvent.change(timePicker, {target: {value: '18:00'}});
+    fireEvent.change(timePicker, {target: {value: '18:30'}});
+    fireEvent.change(timePicker, {target: {value: '17:00'}});
     fireEvent.change(noGuests, {target: {value: 1}});
     fireEvent.change(occasion, {target: {value: 'Anniversary'}});
     expect(submitButton)
