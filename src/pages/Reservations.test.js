@@ -1,36 +1,69 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import {
+  render,
+  screen,
+  fireEvent,
+  waitFor, 
+} from '@testing-library/react';
+import { BrowserRouter } from "react-router-dom";
+
 import Reservations from './Reservations';
+
 import { today, tomorrow } from '../utils/dateHelpers.js';
 
-describe('Default form values in <Reservations/>', () => {
-  it('Form is present', () => {
-    render(<Reservations/>);
+describe('In <Reservations/>', () => {
+  it('form is present', () => {
+    render(
+      <BrowserRouter>
+        <Reservations/>
+      </BrowserRouter>
+    );
+
     expect(screen.getByRole('form'))
       .toBeInTheDocument();
   });
 
-  it('Default times show instruction', () => {
-    render(<Reservations/>);
+  it('default times show instruction', () => {
+    render(
+      <BrowserRouter>
+        <Reservations/>
+      </BrowserRouter>
+    );
+
     expect(screen.getByLabelText('Choose time'))
       .toHaveValue('Please select a date');
   });
 
-  it('Default guests = 0', () => {
-    render(<Reservations/>);
+  it('default guests = 0', () => {
+    render(
+      <BrowserRouter>
+        <Reservations/>
+      </BrowserRouter>
+    );
+
     expect(screen.getByLabelText('Number of guests'))
       .toHaveValue(0);
   });
 
-  it('Form button disabled by default', () => {
-    render(<Reservations/>);
+  it('form button disabled by default', () => {
+    render(
+      <BrowserRouter>
+        <Reservations/>
+      </BrowserRouter>
+    );
+
     expect(screen.getByRole('button', {name: 'Make Your Reservation'}))
       .toBeDisabled();
   });
 });
 
-describe('Form interactivity in <Reservations/>', () => {
-  it('Times populate when date selected', async () => {
-    render(<Reservations/>);
+describe('Interactively in <Reservations/>', () => {
+  it('times populate when a date is selected', async () => {
+    render(
+      <BrowserRouter>
+        <Reservations/>
+      </BrowserRouter>
+    );
+
     const datePicker = await screen.findByLabelText('Choose date')
     fireEvent.change(datePicker, {target: {value: today()}});
     const timePicker = await screen.findByLabelText('Choose time')
@@ -38,8 +71,12 @@ describe('Form interactivity in <Reservations/>', () => {
       .not.toHaveValue('Please select a date');
   });
 
-  it('Button activates only when all fields have been touched', async () => {
-    render(<Reservations/>);
+  it('submit button activates only when all fields have been touched', async () => {
+    render(
+      <BrowserRouter>
+        <Reservations/>
+      </BrowserRouter>
+    );
     
     const datePicker = await screen.findByLabelText('Choose date');
     const timePicker = await screen.findByLabelText('Choose time');
@@ -52,35 +89,32 @@ describe('Form interactivity in <Reservations/>', () => {
       .toBeDisabled();
 
     fireEvent.change(datePicker, {target: {value: today()}});
-    fireEvent.change(timePicker, {target: {value: '17:00'}});
-    fireEvent.change(timePicker, {target: {value: '17:30'}});
-    fireEvent.change(timePicker, {target: {value: '18:00'}});
-    fireEvent.change(timePicker, {target: {value: '18:30'}});
+    fireEvent.change(timePicker, {target: {value: '23:00'}});
     expect(submitButton)
-      .toBeDisabled();
+    .toBeDisabled();
 
     fireEvent.change(datePicker, {target: {value: today()}});
-    fireEvent.change(timePicker, {target: {value: '17:00'}});
-    fireEvent.change(timePicker, {target: {value: '17:30'}});
-    fireEvent.change(timePicker, {target: {value: '18:00'}});
-    fireEvent.change(timePicker, {target: {value: '18:30'}});
+    fireEvent.change(timePicker, {target: {value: '23:00'}});
     fireEvent.change(noGuests, {target: {value: 1}});
     expect(submitButton)
       .toBeDisabled();
 
     fireEvent.change(datePicker, {target: {value: today()}});
-    fireEvent.change(timePicker, {target: {value: '17:00'}});
-    fireEvent.change(timePicker, {target: {value: '17:30'}});
-    fireEvent.change(timePicker, {target: {value: '18:00'}});
-    fireEvent.change(timePicker, {target: {value: '18:30'}});
+    fireEvent.change(timePicker, {target: {value: '23:00'}});
     fireEvent.change(noGuests, {target: {value: 1}});
     fireEvent.change(occasion, {target: {value: 'Anniversary'}});
-    expect(submitButton)
-      .not.toBeDisabled();
+    await waitFor(() =>
+      expect(submitButton)
+        .not.toBeDisabled()
+    );
   });
 
   it('"Choose Time" returns correct times for today', async () => {
-    render(<Reservations/>);
+    render(
+      <BrowserRouter>
+        <Reservations/>
+      </BrowserRouter>
+    );
 
     const datePicker = await screen.findByLabelText('Choose date')
     fireEvent.change(datePicker, {target: {value: today()}});
@@ -90,7 +124,11 @@ describe('Form interactivity in <Reservations/>', () => {
   });
 
   it('"Choose Time" returns correct times for tomorrow', async () => {
-    render(<Reservations/>);
+    render(
+      <BrowserRouter>
+        <Reservations/>
+      </BrowserRouter>
+    );
 
     const datePicker = await screen.findByLabelText('Choose date')
     fireEvent.change(datePicker, {target: {value: tomorrow()}});
@@ -99,8 +137,12 @@ describe('Form interactivity in <Reservations/>', () => {
       .toHaveTextContent('10:00');
   });
 
-  it('Form resets after submission', async () => {
-    render(<Reservations/>);
+  it('the form resets after submission', async () => {
+    render(
+      <BrowserRouter>
+        <Reservations/>
+      </BrowserRouter>
+    );
     
     const datePicker = await screen.findByLabelText('Choose date');
     const timePicker = await screen.findByLabelText('Choose time');
@@ -109,7 +151,7 @@ describe('Form interactivity in <Reservations/>', () => {
     const submitButton = await screen.findByRole('button', {name: 'Make Your Reservation'})
 
     fireEvent.change(datePicker, {target: {value: today()}});
-    fireEvent.change(timePicker, {target: {value: '18:00'}});
+    fireEvent.change(timePicker, {target: {value: '23:00'}});
     fireEvent.change(noGuests, {target: {value: 1}});
     fireEvent.change(occasion, {target: {value: 'Anniversary'}});
     fireEvent.click(submitButton);

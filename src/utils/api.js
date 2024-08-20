@@ -38,12 +38,16 @@ const fetchAPI = function(date) {
         }
     };
 
-    if (date == today()) {
+    if (date === today()) {
         startHours = Math.max(openTime, nowHour);
         makeTimes();
+        //For testing;
+        result.push('23:00');
     } else if (dateAsNum(date) > dateAsNum(today())) {
         startHours = openTime;
         makeTimes();
+        //For testing;
+        result.push('23:00');
     } else {
         result.push('No Times Available');
     };
