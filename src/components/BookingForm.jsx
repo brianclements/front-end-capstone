@@ -116,7 +116,7 @@ const BookingForm = (props) => {
               <option value="anniversary">Anniversary</option>
           </select>
           <button
-            disabled={!date | !time | !guests | guests == 0 | !occasion}
+            disabled={!date | !time | !guests | guests === 0 | !occasion}
             type="submit"
             >
               Make Your Reservation
