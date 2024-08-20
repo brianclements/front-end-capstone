@@ -1,10 +1,9 @@
-// import { useState } from "react";
-import { useReducer } from "react";
+// import { useState } from 'react';
+import { useReducer } from 'react';
 import Hero from '../components/Hero';
 import BookingForm from '../components/BookingForm';
 import { initializeTimes, initialState, submitForm } from '../components/dateState.js';
 import './Reservations.css';
-
 
 const Reservations = () => {
 

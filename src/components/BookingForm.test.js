@@ -7,7 +7,7 @@ import {
 import {
   BrowserRouter,
   // MemoryRouter,
-} from "react-router-dom";
+} from 'react-router-dom';
 
 import BookingForm from './BookingForm';
 import Reservations from '../pages/Reservations';

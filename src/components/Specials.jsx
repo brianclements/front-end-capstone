@@ -1,4 +1,4 @@
-import style from "./Specials.module.css";
+import style from './Specials.module.css';
 
 const Specials = () => {
   return (
