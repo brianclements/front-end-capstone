@@ -8,7 +8,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import Reservations from './Reservations';
 
-import { today, tomorrow } from '../utils/dateHelpers.js';
+import { formattedDate } from '../utils/dateHelpers.js';
 
 describe('In <Reservations/>', () => {
   it('form is present', () => {
@@ -65,7 +65,7 @@ describe('Interactively in <Reservations/>', () => {
     );
 
     const datePicker = await screen.findByLabelText('Choose date')
-    fireEvent.change(datePicker, {target: {value: today()}});
+    fireEvent.change(datePicker, {target: {value: formattedDate()}});
     const timePicker = await screen.findByLabelText('Choose time')
     expect(timePicker)
       .not.toHaveValue('Please select a date');
@@ -109,7 +109,7 @@ describe('Interactively in <Reservations/>', () => {
     );
   });
 
-  it('"Choose Time" returns correct times for today', async () => {
+  it('"Choose Time" returns times', async () => {
     render(
       <BrowserRouter>
         <Reservations/>
@@ -117,10 +117,10 @@ describe('Interactively in <Reservations/>', () => {
     );
 
     const datePicker = await screen.findByLabelText('Choose date')
-    fireEvent.change(datePicker, {target: {value: today()}});
+    fireEvent.change(datePicker, {target: {value: formattedDate(1)}});
     const timePicker = await screen.findByLabelText('Choose time')
     expect(timePicker)
-      .not.toHaveTextContent('10:00');
+      .toHaveTextContent('23:00');
   });
 
   it('"Choose Time" returns correct times for tomorrow', async () => {
@@ -150,7 +150,7 @@ describe('Interactively in <Reservations/>', () => {
     const occasion = await screen.findByLabelText('Occasion');
     const submitButton = await screen.findByRole('button', {name: 'Make Your Reservation'})
 
-    fireEvent.change(datePicker, {target: {value: today()}});
+    fireEvent.change(datePicker, {target: {value: formattedDate()}});
     fireEvent.change(timePicker, {target: {value: '23:00'}});
     fireEvent.change(noGuests, {target: {value: 1}});
     fireEvent.change(occasion, {target: {value: 'Anniversary'}});

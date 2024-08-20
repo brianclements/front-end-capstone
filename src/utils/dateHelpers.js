@@ -1,15 +1,16 @@
-let date = new Date();
-let currentDay= String(date.getDate()).padStart(2, '0');
-let tomorrowDay= String(date.getDate()+1).padStart(2, '0');
-let currentMonth = String(date.getMonth()+1).padStart(2,"0");
-let currentYear = date.getFullYear();
-
-export const today = () => {
-  return `${currentYear}-${currentMonth}-${currentDay}`;
+const daysAsMs = (days) => {
+  return days * 24 * 60 * 60 *1000;
 };
 
-export const tomorrow = () => {
-  return `${currentYear}-${currentMonth}-${tomorrowDay}`;
+const formatTimestamp = (tsInMs) => {
+  return new Date(tsInMs).toLocaleDateString('sv-SE');
+};
+
+export const formattedDate = (daysDelta = 0) => {
+  // Deliver the date, formatted in YYYY-MM-DD format, for today by default,
+  // or offset by number of daysDelta. Takes negative or positive numbers.
+  const now = new Date().getTime();
+  return formatTimestamp(now + daysAsMs(daysDelta));
 };
 
 export const dateAsNum = (dateStr) => {

@@ -1,4 +1,4 @@
-import { today, dateAsNum } from '../utils/dateHelpers.js';
+import { formattedDate, dateAsNum } from '../utils/dateHelpers.js';
 
 const seededRandom = function(seed) {
     var m = 2**35 - 31;
@@ -38,12 +38,12 @@ const fetchAPI = function(date) {
         }
     };
 
-    if (date === today()) {
+    if (date === formattedDate()) {
         startHours = Math.max(openTime, nowHour);
         makeTimes();
         //For testing;
         result.push('23:00');
-    } else if (dateAsNum(date) > dateAsNum(today())) {
+    } else if (dateAsNum(date) > dateAsNum(formattedDate())) {
         startHours = openTime;
         makeTimes();
         //For testing;

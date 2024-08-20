@@ -12,7 +12,7 @@ import {
 import BookingForm from './BookingForm';
 import Reservations from '../pages/Reservations';
 
-import { today } from '../utils/dateHelpers.js';
+import { formattedDate } from '../utils/dateHelpers.js';
 
 describe('<BookingForm/>', () => {
   const todayTimes = [
@@ -35,9 +35,9 @@ describe('<BookingForm/>', () => {
     );
 
     const datePicker = await screen.findByLabelText('Choose date');
-    fireEvent.change(datePicker, {target: {value: '2024-08-01'}});
+    fireEvent.change(datePicker, {target: {value: todaysDate}});
     expect(updateTimes)
-      .toHaveBeenCalledWith('2024-08-01');
+      .toHaveBeenCalledWith(todaysDate);
   });
 
   // TODO Leaving this disabled, can't figure it out how to get it to submit
