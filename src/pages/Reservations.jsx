@@ -2,7 +2,7 @@
 import { useReducer } from "react";
 import Hero from '../components/Hero';
 import BookingForm from '../components/BookingForm';
-import { initializeTimes, initialState, parseForm } from '../components/dateState.js';
+import { initializeTimes, initialState, submitForm } from '../components/dateState.js';
 import './Reservations.css';
 
 
@@ -37,7 +37,7 @@ const Reservations = () => {
       <BookingForm 
         availableTimes={availableTimes}
         updateAvailableTimes={updateTimes}
-        parseForm={parseForm}
+        submitForm={submitForm}
       />
     </main>
   );
