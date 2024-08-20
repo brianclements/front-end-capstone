@@ -1,17 +1,31 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import { dateAsNum, formattedDate } from '../utils/dateHelpers.js';
+
 import style from './BookingForm.module.css';
 
 const BookingForm = (props) => {
   const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
+  const [dateError, setDateError] = useState("");
+  const [time, setTime] = useState(props.availableTimes[0]);
   const [guests, setGuests] = useState("0");
-  const [occasion, setOccasion] = useState("");
+  const [occasion, setOccasion] = useState("None");
   const navigate = useNavigate();
 
   const onDateChange = (e) => {
-    setDate(e.target.value);
-    props.updateAvailableTimes(e.target.value);
+    const newDate = e.target.value;
+    if (dateAsNum(newDate) < dateAsNum(formattedDate())) {
+      setDateError("Date cannot be in the past");
+      setDate("");
+    } else if (dateAsNum(newDate) > (dateAsNum(formattedDate(30)))) {
+      setDateError("Date cannot be more than 30 days in the future");
+      setDate("");
+    } else {
+      setDateError("");
+      setDate(newDate);
+      props.updateAvailableTimes(newDate);
+    };
   };
 
   const handleSubmit = (e) => {
@@ -52,6 +66,7 @@ const BookingForm = (props) => {
             value={date}
             onChange={onDateChange}
           />
+          {dateError && <p className={style["error-message"]}>{dateError}</p>}
           <label
             id="time-label"
             htmlFor="res-time"
@@ -65,7 +80,7 @@ const BookingForm = (props) => {
             onChange={(e) => setTime(e.target.value)}
             >
               {props.availableTimes.map(time => (
-                <option key={time}>{time}</option>
+                <option key={time} value={time}>{time}</option>
               ))}
           </select>
           <label
@@ -96,11 +111,12 @@ const BookingForm = (props) => {
             value={occasion}
             onChange={(e) => setOccasion(e.target.value)}
             >
-              <option>Birthday</option>
-              <option>Anniversary</option>
+              <option value="none">None</option>
+              <option value="birthday">Birthday</option>
+              <option value="anniversary">Anniversary</option>
           </select>
           <button
-            disabled={!date | !time | !guests | !occasion}
+            disabled={!date | !time | !guests | guests == 0 | !occasion}
             type="submit"
             >
               Make Your Reservation
