@@ -8,7 +8,7 @@ const Nav = () => {
     <nav>
       <ul className="karla-section-title">
         <img src={textLogo} alt="Little Lemon logo"/>
-        <Links/>
+        <Links role="nav"/>
       </ul>
     </nav>
     );
