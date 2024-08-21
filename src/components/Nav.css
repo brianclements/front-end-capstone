@@ -14,12 +14,54 @@ header nav {
 nav ul {
   list-style-type: none;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   gap: 2rem;
   margin: auto;
+  @media only screen and (min-width: 600px) {
+    flex-direction: row;
+  }
+}
+
+#icon-outer-div {
+  width: 12vw;
+  display: flex;
+  @media only screen and (min-width: 600px) {
+    display: none;
+  }
+}
+
+#icon-inner-div {
+  display: flex;
+  justify-content: flex-start;
+  width: 3rem;
+  height: 3rem;
+  padding-top: 0.25rem;
+}
+
+#menu-icon {
+  font-size: 2.5rem;
+  color: black;
+  margin: 0;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.closed-menu li {
+  display: none;
+  @media only screen and (min-width: 600px) {
+    display: flex;
+  }
+}
+
+.open-menu li {
+  display: flex;
 }
 
 header nav ul {
   padding: 0;
+}
+
+header nav ul li {
+  justify-content: left;
 }

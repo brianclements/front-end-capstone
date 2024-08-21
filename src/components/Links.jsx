@@ -1,4 +1,5 @@
 import { NavLink, Link } from 'react-router-dom';
+import { toggleMenu } from '../utils/ui.js'
 import './Links.css';
 
 const Links = (props) => {
@@ -12,6 +13,7 @@ const Links = (props) => {
             to="/"
             className={({ isActive }) =>
               (isActive ? "active-navlink" : "navlink" )}
+            onClick={toggleMenu}
             >
               Home
           </NavLink>
@@ -20,6 +22,7 @@ const Links = (props) => {
           to="/reservations"
           className={({ isActive }) =>
             (isActive ? "active-navlink" : "navlink" )}
+          onClick={toggleMenu}
         >
           Reservations
         </NavLink>
@@ -38,7 +41,7 @@ const Links = (props) => {
 
   return (
     <>
-      <li>{navHome} </li>
+      <li>{navHome}</li>
       <li><a href="#">About</a></li>
       <li><a href="#">Menu</a></li>
       <li>{navReservations}</li>

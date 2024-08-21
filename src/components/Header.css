@@ -1,4 +1,7 @@
 header {
-  height: 8vh;
-  overflow: hidden;
+  flex-direction:
+  @media only screen and (min-width: 600px) {
+    height: 8vh;
+    overflow: hidden;
+  }
 }
