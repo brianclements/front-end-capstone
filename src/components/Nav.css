@@ -1,7 +1,3 @@
-header nav ul img {
-  height: 3.4rem;
-}
-
 header nav {
   height: 100%;
   width: 100%;
@@ -18,33 +14,63 @@ nav ul {
   justify-content: center;
   gap: 2rem;
   margin: auto;
+  width: 100%;
   @media only screen and (min-width: 600px) {
     flex-direction: row;
   }
 }
 
-#icon-outer-div {
-  width: 12vw;
+header nav ul {
+  padding: 0;
+}
+
+header nav ul li {
+  justify-content: center;
+}
+
+#logo-menu-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#logo-menu-div a {
+  justify-content: space-around;
+}
+
+#logo-menu-div a:hover { 
+  text-decoration: none; 
+} 
+
+#menu-icon-box {
+  width: 3.2rem;
+  height: 3.2rem;
+  font-size: 2.25rem;
+  color: black;
   display: flex;
   @media only screen and (min-width: 600px) {
     display: none;
   }
 }
 
-#icon-inner-div {
-  display: flex;
-  justify-content: flex-start;
-  width: 3rem;
-  height: 3rem;
-  padding-top: 0.25rem;
+#spacer-menu-div {
+  width: 3.2rem;
+  height: 3.2rem;
+  @media only screen and (min-width: 600px) {
+    display: none;
+  }
 }
 
-#menu-icon {
-  font-size: 2.5rem;
-  color: black;
-  margin: 0;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+#menu-icon-box icon {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.open-menu li {
+  display: flex;
 }
 
 .closed-menu li {
@@ -54,14 +80,17 @@ nav ul {
   }
 }
 
-.open-menu li {
-  display: flex;
+.closed-menu #menu-icon-box {
+  background: white;
+  color: black;
 }
 
-header nav ul {
-  padding: 0;
+.closed-menu #menu-icon-box:hover {
+  background: var(--highlight-gray);
+  color: var(--highlight-gray-dark);
 }
 
-header nav ul li {
-  justify-content: left;
+.open-menu #menu-icon-box {
+  background: var(--highlight-gray);
+  color: var(--highlight-gray-dark);
 }

@@ -8,13 +8,12 @@ const Nav = () => {
   return (
     <nav id="navbar" className="closed-menu">
       <ul className="karla-section-title">
-        <img src={textLogo} alt="Little Lemon logo"/>
-        <Links role="nav"/>
-      </ul>
-      <div id="icon-outer-div">
-        <div id="icon-inner-div">
+        <div id="logo-menu-div">
+          <div id="spacer-menu-div">
+          </div>
+          <img src={textLogo} alt="Little Lemon logo"/>
           <a 
-            id="menu-icon"
+            id="menu-icon-box"
             href="javascript:void(0);"
             class="icon"
             onClick={toggleMenu}
@@ -22,7 +21,8 @@ const Nav = () => {
             <icon class="fa fa-bars"></icon>
           </a>
         </div>
-      </div>
+        <Links role="nav"/>
+      </ul>
     </nav>
     );
   };
