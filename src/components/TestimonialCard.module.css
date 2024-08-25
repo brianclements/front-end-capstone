@@ -1,0 +1,55 @@
+#card {
+  background: white;
+  height: 8.5rem;
+  width: 8.5rem;
+  display: flex;
+  flex-direction: column;
+  p {
+    margin: 0;
+  }
+}
+
+#card-padding {
+  padding: 0.2rem 0.75rem;
+}
+
+#rating {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 0.3rem;
+  width: 100%;
+  img {
+    object-fit: contain;
+    width: 1.15rem;
+  }
+}
+
+#reviewer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  p {
+    width: 100%;
+    margin: auto;
+    -webkit-line-clamp: 2;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding-left: 0.5rem;
+  }
+}
+
+#review {
+  padding-top: 0.5rem;
+  font-size: 0.6rem;
+}
+
+.multiline-ellipsis {
+  /* customize line-clamp per use*/
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
