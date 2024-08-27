@@ -14,8 +14,8 @@ const Nav = () => {
           <img src={textLogo} alt="Little Lemon logo"/>
           <a 
             id="menu-icon-box"
-            href="javascript:void(0);"
-            class="icon"
+            href="#"
+            className="icon"
             onClick={toggleMenu}
           >
             <i className="fa fa-bars"></i>

@@ -6,7 +6,7 @@ const TestimonialCard = (props) => {
     const rating = [];
       for (let i = numStars; i > 0; i--) {
         rating.push(
-          <img src={starImg} alt="1 Star"/>
+          <img key={i} src={starImg}/>
         );
       };
 
@@ -20,7 +20,7 @@ const TestimonialCard = (props) => {
   return (
     <article id={style.card}>
       <div id={style["card-padding"]}>
-        <div id={style.rating}>
+        <div id={style.rating} title={props.rating + " star rating"}>
           {insertRating(props.rating)}
         </div>
         <div id={style.reviewer}>
