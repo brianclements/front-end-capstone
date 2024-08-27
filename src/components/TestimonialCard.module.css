@@ -2,15 +2,19 @@
   background: white;
   height: 8.5rem;
   width: 8.5rem;
-  display: flex;
-  flex-direction: column;
   p {
     margin: 0;
   }
 }
 
 #card-padding {
-  padding: 0.2rem 0.75rem;
+  height: 100%;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  gap: 0.5rem;
 }
 
 #rating {
@@ -36,6 +40,11 @@
     font-size: 0.85rem;
     font-weight: 500;
     padding-left: 0.5rem;
+  }
+  img {
+    object-fit: cover;
+    width: 2.1rem;
+    height: 2.1rem;
   }
 }
 
