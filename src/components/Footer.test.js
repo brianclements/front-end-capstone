@@ -25,8 +25,10 @@ describe('<Footer/>', () => {
         <Footer/>
       </MemoryRouter>
     );
-    const logo = screen.getByRole('img');
-    expect(logo).toHaveAttribute('src', lemonLogo);
-    expect(logo).toHaveAttribute('alt', 'Little Lemon logo');
+    const logo = screen.getAllByRole('img');
+    for (let i = (logo.length - 1); i >= 0; i--) {
+      expect(logo[i]).toHaveAttribute('src', lemonLogo);
+      expect(logo[i]).toHaveAttribute('alt', 'Little Lemon logo');
+    };
   });
 });

@@ -18,7 +18,7 @@ const Nav = () => {
             class="icon"
             onClick={toggleMenu}
           >
-            <icon class="fa fa-bars"></icon>
+            <i className="fa fa-bars"></i>
           </a>
         </div>
         <Links role="nav"/>

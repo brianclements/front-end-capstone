@@ -23,17 +23,17 @@ const Footer = () => {
           <ul id="socials-list">
             <li>
               <a>
-                <icon class="fa fa-instagram"></icon>
+                <i className="fa fa-instagram"></i>
               </a>
             </li>
             <li>
               <a>
-                <icon class="fa fa-twitter"></icon>
+                <i className="fa fa-twitter"></i>
               </a>
             </li>
             <li>
               <a>
-                <icon class="fa fa-facebook"></icon>
+                <i className="fa fa-facebook"></i>
               </a>
             </li>
           </ul>
