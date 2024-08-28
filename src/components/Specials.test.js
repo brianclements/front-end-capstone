@@ -1,10 +1,13 @@
 import { render, screen } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 import Specials from './Specials';
 
 describe('<Specials/>', () => {
   it('Should have > 0 cards', () => {
     render(
+      <BrowserRouter>
         <Specials/>
+      </BrowserRouter>
     );
 
     const cards = screen.getAllByRole('article')
@@ -13,7 +16,9 @@ describe('<Specials/>', () => {
 
   it('Should have correct sample content', () => {
     render(
+      <BrowserRouter>
         <Specials/>
+      </BrowserRouter>
     );
 
     expect(screen.getByText('Greek Salad')).toBeInTheDocument();

@@ -3,11 +3,14 @@ import {
   screen,
   render,
 } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 
 describe('<ConfirmedBooking/>', () => {
   it('renders', () => {
     render(
-      <ConfirmedBooking/>
+      <BrowserRouter>
+        <ConfirmedBooking/>
+      </BrowserRouter>
     );
 
     expect(screen.getByText(/confirmed/i))

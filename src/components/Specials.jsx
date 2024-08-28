@@ -1,5 +1,6 @@
 import style from './Specials.module.css';
 import SpecialsCard from './SpecialsCard';
+import Button from './Button';
 import greekSaladImg from '../assets/images/greek_salad.jpeg';
 import brochetteImg from '../assets/images/brochette.jpeg';
 import lemonDessertImg from '../assets/images/lemon_dessert.jpeg';
@@ -26,7 +27,14 @@ const Specials = () => {
   return (
     <section id={style.section}>
       <div id={style["padding-div"]}>
-        <h1 id={style["section-h1"]} className="markazi-text-display-title">Specials</h1>
+        <div id={style["title-div"]}>
+          <h1 id={style["section-h1"]} className="markazi-text-display-title">Specials</h1>
+          <Button 
+            text="Online Menu"
+            navigateTo="/"
+            size="button-10x4rem"
+          />
+        </div>
         <div id={style["specials-list"]}>
           <SpecialsCard
             image={greekSaladImg}

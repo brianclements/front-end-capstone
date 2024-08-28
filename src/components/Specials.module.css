@@ -13,9 +13,21 @@
   }
 }
 
+#title-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  button {
+    margin: 0;
+  }
+}
+
 #section-h1 {
   color: black;
   text-align: center;
+    margin: 0;
   @media only screen and (min-width: 600px) {
     text-align: left;
   }

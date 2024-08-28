@@ -1,3 +1,4 @@
+import Button from './Button';
 import style from './Hero.Bio.module.css';
 
 const Bio = () => {
@@ -9,6 +10,11 @@ const Bio = () => {
         We are a family owned Mediterranean restaurant, focused on traditional
         recipes served with a modern twist.
       </p>
+      <Button 
+        text="Reserve a Table"
+        navigateTo="/reservations"
+        size="button-12x4rem"
+      />
     </div>
   );
 };
