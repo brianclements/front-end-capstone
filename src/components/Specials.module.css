@@ -9,7 +9,9 @@
   flex-direction: column;
   padding: 1rem 2.25rem;
   @media only screen and (min-width: 600px) {
-    padding: 2rem 5rem;
+    padding: 2rem 6rem;
+    max-width: 1000px;
+    margin: 0 auto;
   }
 }
 
@@ -41,7 +43,7 @@
   gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(11rem, max-content));
   @media only screen and (min-width: 600px) {
-    grid-template-columns: repeat(3, minmax(11rem, max-content));
+    grid-template-columns: repeat(3, minmax(10rem, max-content));
     justify-content: center;
     gap: 2rem;
   }

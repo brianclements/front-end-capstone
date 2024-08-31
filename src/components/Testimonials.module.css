@@ -7,7 +7,9 @@
   flex-direction: column;
   padding: 1rem 2.25rem;
   @media only screen and (min-width: 600px) {
-    padding: 2rem 8rem;
+    padding: 2rem 6rem;
+    max-width: 1000px;
+    margin: 0 auto;
   }
 }
 
@@ -21,8 +23,8 @@
 #testimonials-list {
   padding: 0.25rem;
   display: grid;
-  grid-gap: 0.75rem;
-  grid-template-columns: repeat(auto-fill, minmax(8.5rem, max-content));
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, max-content));
   grid-auto-rows: 8.5rem;
   justify-content: space-evenly;
 }
