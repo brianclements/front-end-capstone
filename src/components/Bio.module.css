@@ -1,18 +1,22 @@
 #bio-div {
-  width: 50%;
+  padding: 1rem 2.25rem;
+  @media only screen and (min-width: 600px) {
+    padding: 0.5rem;
+    max-width: 40vw;
+  }
 }
 
-#section-h1 {
+#h1 {
   color: var(--primary-yellow);
   margin: 0;
 }
 
-#section-h2 {
+#h2 {
   color: var(--highlight-gray);
   margin: 0;
 }
 
-p {
+#bio-text {
   color: var(--highlight-gray);
   border-top: 1rem;
 }

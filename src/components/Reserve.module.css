@@ -1,8 +1,9 @@
-#bio-div {
+#reserve-div {
   padding: 1rem 2.25rem;
+  /* text-align: center; */
   @media only screen and (min-width: 600px) {
-    padding: 0;
-    width: 45%;
+    padding: 0.5rem;
+    max-width: 40vw;
   }
 }
 
@@ -16,7 +17,12 @@
   margin: 0;
 }
 
-#bio-text {
+#h3 {
+  color: var(--highlight-gray);
+  margin: 0;
+}
+
+#reserve-text {
   color: var(--highlight-gray);
   border-top: 1rem;
 }
