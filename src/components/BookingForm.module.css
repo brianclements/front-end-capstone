@@ -1,7 +1,84 @@
 #bookingForm {
-  display: grid;
-  max-width: 200px;
-  gap: 20px;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  border: 0;
+  fieldset {
+    background-color: var(--highlight-gray);
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 0;
+    gap: 2rem;
+    label, input, select {
+      width: 100%;
+    }
+    @media only screen and (min-width: 600px) {
+      padding: 2rem 1rem;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      label, input, select {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  width: 70vw;
+  max-width: 15rem;
+  @media only screen and (min-width: 600px) {
+    width: 70vw;
+    max-width: 13rem;
+  }
+}
+
+.border-top-1px {
+  border-top: 1px solid var(--highlight-gray-dark) !important;
+}
+
+.border-bottom-1px {
+  border-bottom: 1px solid var(--highlight-gray-dark) !important;
+}
+
+.border-radius-top {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.border-radius-bottom {
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+#padding-div {
+  display: flex;
+  flex-direction: column;
+  @media only screen and (min-width: 600px) {
+    padding: 2rem 6rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+}
+
+#location-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.show {
+  display: flex !important;
 }
 
 .error-message {
