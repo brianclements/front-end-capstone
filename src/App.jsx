@@ -1,9 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
+
 import Main from './pages/Main';
 import Reservations from './pages/Reservations';
-import Footer from './components/Footer';
 import ConfirmedBooking from './pages/ConfirmedBooking';
+
+import Header from './components/Header';
+import Footer from './components/Footer';
+
 import './App.css';
 
 function App() {
