@@ -12,7 +12,7 @@ const Button = (props) => {
       name={props.text}
       type="button"
       onClick={handleClick}
-      className={props.size}
+      className={props.styles}
     >
       <h4>{props.text}</h4>
     </button>

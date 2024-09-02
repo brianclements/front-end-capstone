@@ -18,7 +18,10 @@ const Main = () => {
           <Button 
             text="Reserve a Table"
             navigateTo="/reservations"
-            size="button-12x4rem"
+            styles={[
+              "button-12x3_5rem",
+              "button-border-radius-8px"
+            ].join(" ")}
           />
         ]}
         image={

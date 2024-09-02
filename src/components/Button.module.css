@@ -1,7 +1,7 @@
 #button {
   margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
   background-color: var(--primary-yellow);
-  border-radius: 8px;
   border: none;
   h4 {
     height: 100%;

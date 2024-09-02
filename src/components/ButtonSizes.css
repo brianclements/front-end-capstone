@@ -1,9 +1,22 @@
-.button-12x4rem {
+.button-12x3_5rem {
   width: 12rem;
   height: 3.5rem;
 }
 
-.button-10x4rem {
+.button-10x3_5rem {
   width: 10rem;
   height: 3.5rem;
+}
+
+.button-8x3rem {
+  width: 8rem;
+  height: 3rem;
+}
+
+.button-border-radius-8px {
+  border-radius: 8px;
+}
+
+.button-border-radius-16px {
+  border-radius: 16px;
 }

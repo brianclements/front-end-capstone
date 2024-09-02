@@ -32,7 +32,10 @@ const Specials = () => {
           <Button 
             text="Online Menu"
             navigateTo="/"
-            size="button-10x4rem"
+            styles={[
+              "button-10x3_5rem",
+              "button-border-radius-8px"
+            ].join(" ")}
           />
         </div>
         <div id={style["specials-list"]}>
