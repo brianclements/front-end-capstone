@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { dateAsNum, formattedDate } from '../utils/dateHelpers.js';
-import Button from './Button';
 
 import style from './BookingForm.module.css';
 
@@ -258,8 +257,8 @@ const BookingForm = (props) => {
               name="phoneNumber"
               aria-labelledby="phoneNumber-label"
               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-              minlength="10"
-              maxlength="14"
+              minLength="10"
+              maxLength="14"
               placeholder="000-000-0000"
               value={phoneNum}
               onChange={onPhoneNumChange}
