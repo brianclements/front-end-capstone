@@ -1,8 +1,9 @@
 #hero-banner {
   background-color: var(--primary-green);
+  min-height: 100px;
+  margin-bottom: 3rem;
   @media only screen and (min-width: 600px) {
     max-height: 400px;
-    margin-bottom: 3rem;
   }
 }
 
