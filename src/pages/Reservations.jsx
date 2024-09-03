@@ -3,7 +3,6 @@ import { useReducer } from 'react';
 import Hero from '../components/Hero';
 import Reserve from '../components/Reserve';
 import BookingForm from '../components/BookingForm';
-import Button from '../components/Button';
 import { initializeTimes, initialState, submitForm } from '../components/dateState.js';
 
 import tableAreaImage from '../assets/images/restaurant.jpg';

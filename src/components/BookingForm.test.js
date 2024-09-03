@@ -79,7 +79,7 @@ describe('<BookingForm/> APIs', () => {
       </BrowserRouter>
     );
 
-    const datePicker = await screen.findByLabelText('Choose date');
+    const datePicker = await screen.findByLabelText(/choose date/i);
     fireEvent.change(datePicker, {target: {value: todaysDate}});
     expect(updateTimes)
       .toHaveBeenCalledWith(todaysDate);
@@ -99,8 +99,8 @@ describe('<BookingForm/> APIs', () => {
       </BrowserRouter>
     );
 
-    const datePicker = await screen.findByLabelText('Choose date')
-    const timePicker = await screen.findByLabelText('Choose time');
+    const datePicker = await screen.findByLabelText(/choose date/i)
+    const timePicker = await screen.findByLabelText(/choose time/i);
 
     fireEvent.change(datePicker, {target: {value: formattedDate()}});
 
@@ -124,7 +124,7 @@ describe('<BookingForm/> validation', () => {
       </BrowserRouter>
     );
 
-    const datePicker = await screen.findByLabelText('Choose date')
+    const datePicker = await screen.findByLabelText(/choose date/i)
     fireEvent.change(datePicker, {target: {value: formattedDate(-2)}});
 
     const errorEl = await screen.findByText(/date cannot be in the past/i);
@@ -146,7 +146,7 @@ describe('<BookingForm/> validation', () => {
       </BrowserRouter>
     );
 
-    const datePicker = await screen.findByLabelText('Choose date')
+    const datePicker = await screen.findByLabelText(/choose date/i)
     fireEvent.change(datePicker, {target: {value: formattedDate(30)}});
 
     let nonExist = false;
@@ -173,40 +173,11 @@ describe('<BookingForm/> validation', () => {
       </BrowserRouter>
     );
 
-    const datePicker = await screen.findByLabelText('Choose date')
+    const datePicker = await screen.findByLabelText(/choose date/i)
     fireEvent.change(datePicker, {target: {value: formattedDate(31)}});
 
     const errorEl = await screen.findByText(/date cannot be more than 30 days/i);
     expect(errorEl)
       .toBeInTheDocument();
-  });
-
-  it('submit button active after selecting valid date, and guests', async () => {
-    // default time will be the first time reported from updateTimes(), and
-    // default occasion is "none". Which are valid defaults.
-    const updateTimes = jest.fn();
-    const submitForm = jest.fn();
-
-    render(
-      <BrowserRouter>
-        <BookingForm 
-          availableTimes={todayTimes}
-          updateAvailableTimes={updateTimes}
-          submitForm={submitForm}
-        />
-      </BrowserRouter>
-    );
-
-    const datePicker = await screen.findByLabelText('Choose date')
-    const noGuests = await screen.findByLabelText('Number of guests');
-    const submitButton = await screen.findByRole('button', {name: 'Make Your Reservation'})
-
-    fireEvent.change(datePicker, {target: {value: formattedDate()}});
-    fireEvent.change(noGuests, {target: {value: 1}});
-
-    await waitFor(() =>
-      expect(submitButton)
-        .not.toBeDisabled()
-    );
   });
 });

@@ -4,9 +4,17 @@ import {
   fireEvent,
   waitFor, 
 } from '@testing-library/react';
-import { BrowserRouter } from "react-router-dom";
+import {
+  BrowserRouter,
+  RouterProvider,
+  createMemoryRouter,
+} from "react-router-dom";
 
+import App from '../App';
+import Main from './Main';
 import Reservations from './Reservations';
+import ConfirmedBooking from './ConfirmedBooking';
+import NotFound from './NotFound';
 
 import { formattedDate } from '../utils/dateHelpers.js';
 
@@ -34,7 +42,7 @@ describe('Interactively in <Reservations/>', () => {
       </BrowserRouter>
     );
 
-    expect(screen.getByLabelText('Choose time'))
+    expect(screen.getByLabelText(/choose time/i))
       .toHaveValue('Please select a date');
   });
 
@@ -45,51 +53,129 @@ describe('Interactively in <Reservations/>', () => {
       </BrowserRouter>
     );
 
-    const datePicker = await screen.findByLabelText('Choose date')
+    const datePicker = await screen.findByLabelText(/choose date/i)
     fireEvent.change(datePicker, {target: {value: formattedDate()}});
-    const timePicker = await screen.findByLabelText('Choose time')
+    const timePicker = await screen.findByLabelText(/choose time/i)
     expect(timePicker)
       .not.toHaveValue('Please select a date');
   });
 
-  // TODO
-  // it('submit button activates only when all fields have been touched', async () => {
-    // render(
-      // <BrowserRouter>
-        // <Reservations/>
-      // </BrowserRouter>
-    // );
+  it('submit button activates only when all fields have been touched', async () => {
+    render(
+      <BrowserRouter>
+        <Reservations/>
+      </BrowserRouter>
+    );
     
-    // const datePicker = await screen.findByLabelText('Choose date');
-    // const timePicker = await screen.findByLabelText('Choose time');
-    // const noGuests = await screen.findByLabelText('Number of guests');
-    // const occasion = await screen.findByLabelText('Occasion');
-    // const submitButton = await screen.findByRole('button', {name: 'Make Your Reservation'})
+    const datePicker = await screen.findByLabelText(/choose date/i);
+    fireEvent.change(datePicker, {target: {value: formattedDate()}});
 
-    // fireEvent.change(datePicker, {target: {value: formattedDate()}});
-    // expect(submitButton)
-      // .toBeDisabled();
+    const timePicker = await screen.findByLabelText(/choose time/i);
+    fireEvent.change(timePicker, {target: {value: '23:00'}});
 
-    // fireEvent.change(datePicker, {target: {value: formattedDate()}});
-    // fireEvent.change(timePicker, {target: {value: '23:00'}});
-    // expect(submitButton)
-    // .toBeDisabled();
+    const noGuests = await screen.findByLabelText(/no. of guests/i);
+    fireEvent.change(noGuests, {target: {value: 1}});
 
-    // fireEvent.change(datePicker, {target: {value: formattedDate()}});
-    // fireEvent.change(timePicker, {target: {value: '23:00'}});
-    // fireEvent.change(noGuests, {target: {value: 1}});
-    // expect(submitButton)
-      // .toBeDisabled();
+    const occasion = await screen.findByLabelText(/occasion/i);
+    fireEvent.change(occasion, {target: {value: 'none'}});
 
-    // fireEvent.change(datePicker, {target: {value: formattedDate()}});
-    // fireEvent.change(timePicker, {target: {value: '23:00'}});
-    // fireEvent.change(noGuests, {target: {value: 1}});
-    // fireEvent.change(occasion, {target: {value: 'Anniversary'}});
-    // await waitFor(() =>
-      // expect(submitButton)
-        // .not.toBeDisabled()
-    // );
-  // });
+    const location = await screen.findByLabelText(/your preferred seating location/i);
+    fireEvent.change(location, {target: {value: 'inside'}});
+
+    const firstName = await screen.findByLabelText(/first name/i);
+    fireEvent.change(firstName, {target: {value: 'chuck'}});
+
+    const lastName = await screen.findByLabelText(/last name/i);
+    fireEvent.change(lastName, {target: {value: 'norris'}});
+
+    const phoneNum = await screen.findByLabelText(/phone/i);
+    fireEvent.change(phoneNum, {target: {value: '123-456-7890'}});
+
+    const email = await screen.findByLabelText(/email/i);
+    fireEvent.change(email, {target: {value: 'asdf@example.com'}});
+
+    const submitButton = await screen.findByRole('button', {name: /make your reservation/i})
+    await waitFor(() =>
+      expect(submitButton)
+        .not.toBeDisabled()
+    );
+  });
+
+  it('submit button activates when phone included, email blank', async () => {
+    render(
+      <BrowserRouter>
+        <Reservations/>
+      </BrowserRouter>
+    );
+    
+    const datePicker = await screen.findByLabelText(/choose date/i);
+    fireEvent.change(datePicker, {target: {value: formattedDate()}});
+
+    const timePicker = await screen.findByLabelText(/choose time/i);
+    fireEvent.change(timePicker, {target: {value: '23:00'}});
+
+    const noGuests = await screen.findByLabelText(/no. of guests/i);
+    fireEvent.change(noGuests, {target: {value: 1}});
+
+    const occasion = await screen.findByLabelText(/occasion/i);
+    fireEvent.change(occasion, {target: {value: 'none'}});
+
+    const location = await screen.findByLabelText(/your preferred seating location/i);
+    fireEvent.change(location, {target: {value: 'inside'}});
+
+    const firstName = await screen.findByLabelText(/first name/i);
+    fireEvent.change(firstName, {target: {value: 'chuck'}});
+
+    const lastName = await screen.findByLabelText(/last name/i);
+    fireEvent.change(lastName, {target: {value: 'norris'}});
+
+    const phoneNum = await screen.findByLabelText(/phone/i);
+    fireEvent.change(phoneNum, {target: {value: '123-456-7890'}});
+
+    const submitButton = await screen.findByRole('button', {name: /make your reservation/i})
+    await waitFor(() =>
+      expect(submitButton)
+        .not.toBeDisabled()
+    );
+  });
+
+  it('submit button activates when email included, phone blank', async () => {
+    render(
+      <BrowserRouter>
+        <Reservations/>
+      </BrowserRouter>
+    );
+    
+    const datePicker = await screen.findByLabelText(/choose date/i);
+    fireEvent.change(datePicker, {target: {value: formattedDate()}});
+
+    const timePicker = await screen.findByLabelText(/choose time/i);
+    fireEvent.change(timePicker, {target: {value: '23:00'}});
+
+    const noGuests = await screen.findByLabelText(/no. of guests/i);
+    fireEvent.change(noGuests, {target: {value: 1}});
+
+    const occasion = await screen.findByLabelText(/occasion/i);
+    fireEvent.change(occasion, {target: {value: 'none'}});
+
+    const location = await screen.findByLabelText(/your preferred seating location/i);
+    fireEvent.change(location, {target: {value: 'inside'}});
+
+    const firstName = await screen.findByLabelText(/first name/i);
+    fireEvent.change(firstName, {target: {value: 'chuck'}});
+
+    const lastName = await screen.findByLabelText(/last name/i);
+    fireEvent.change(lastName, {target: {value: 'norris'}});
+
+    const email = await screen.findByLabelText(/email/i);
+    fireEvent.change(email, {target: {value: 'asdf@example.com'}});
+
+    const submitButton = await screen.findByRole('button', {name: /make your reservation/i})
+    await waitFor(() =>
+      expect(submitButton)
+        .not.toBeDisabled()
+    );
+  });
 
   it('"Choose Time" returns times', async () => {
     render(
@@ -98,59 +184,72 @@ describe('Interactively in <Reservations/>', () => {
       </BrowserRouter>
     );
 
-    const datePicker = await screen.findByLabelText('Choose date')
+    const datePicker = await screen.findByLabelText(/choose date/i)
     fireEvent.change(datePicker, {target: {value: formattedDate(1)}});
-    const timePicker = await screen.findByLabelText('Choose time')
+    const timePicker = await screen.findByLabelText(/choose time/i)
     expect(timePicker)
       .toHaveTextContent('23:00');
   });
 
-  it('the form resets after submission', async () => {
-    render(
-      <BrowserRouter>
-        <Reservations/>
-      </BrowserRouter>
-    );
-    
-    const datePicker = await screen.findByLabelText('Choose date');
-    const timePicker = await screen.findByLabelText('Choose time');
-    const noGuests = await screen.findByLabelText('Number of guests');
-    const occasion = await screen.findByLabelText('Occasion');
-    const submitButton = await screen.findByRole('button', {name: 'Make Your Reservation'})
+  it('can be submitted & redirects to confirmation page on success', async () => {
+    const routes = [
+      {
+        path: "*",
+        element: (
+          <>
+            <App/>
+          </>
+        ),
+        errorElement: <NotFound/>,
+        children: [
+          { path: "*", element: <Main/> },
+          { path: "*/reservations", element: <Reservations/> },
+          { path: "*/reservations/success", element: <ConfirmedBooking/> },
+        ],
+      },
+    ];
 
+    const router = createMemoryRouter(routes, {
+      initialEntries: ["/reservations"],
+    });
+
+    render(
+      <RouterProvider router={router}/>
+    );
+
+    const datePicker = await screen.findByLabelText(/choose date/i);
     fireEvent.change(datePicker, {target: {value: formattedDate()}});
+
+    const timePicker = await screen.findByLabelText(/choose time/i);
     fireEvent.change(timePicker, {target: {value: '23:00'}});
+
+    const noGuests = await screen.findByLabelText(/no. of guests/i);
     fireEvent.change(noGuests, {target: {value: 1}});
-    fireEvent.change(occasion, {target: {value: 'Anniversary'}});
+
+    const occasion = await screen.findByLabelText(/occasion/i);
+    fireEvent.change(occasion, {target: {value: 'none'}});
+
+    const location = await screen.findByLabelText(/your preferred seating location/i);
+    fireEvent.change(location, {target: {value: 'inside'}});
+
+    const firstName = await screen.findByLabelText(/first name/i);
+    fireEvent.change(firstName, {target: {value: 'chuck'}});
+
+    const lastName = await screen.findByLabelText(/last name/i);
+    fireEvent.change(lastName, {target: {value: 'norris'}});
+
+    const phoneNum = await screen.findByLabelText(/phone/i);
+    fireEvent.change(phoneNum, {target: {value: '123-456-7890'}});
+
+    const email = await screen.findByLabelText(/email/i);
+    fireEvent.change(email, {target: {value: 'asdf@example.com'}});
+
+    const submitButton = await screen.findByRole('button', {name: /make your reservation/i})
     fireEvent.click(submitButton);
 
-    expect(submitButton)
-      .toBeDisabled();
+    await waitFor(() =>
+      expect(screen.getByText(/confirmed/i))
+        .toBeInTheDocument()
+    );
   });
-
-  // TODO Leaving this disabled, can't figure it out how to get it to submit
-  // and navigate to the confirmation page in this test. Works fine in person
-  // in the browser. I want to move on with my life.
-  // it('can be submitted & redirects to confirmation page on success', async () => {
-    // render(
-      // <MemoryRouter>
-        // <Reservations/>
-      // </MemoryRouter>
-    // );
-    // const datePicker = await screen.findByLabelText('Choose date');
-    // const timePicker = await screen.findByLabelText('Choose time');
-    // const noGuests = await screen.findByLabelText('Number of guests');
-    // const occasion = await screen.findByLabelText('Occasion');
-    // const submitButton = await screen.findByRole('button', {name: 'Make Your Reservation'})
-
-    // fireEvent.change(datePicker, {target: {value: formattedDate()}});
-    // fireEvent.change(timePicker, {target: {value: '23:00'}});
-    // fireEvent.change(noGuests, {target: {value: 1}});
-    // fireEvent.change(occasion, {target: {value: 'Anniversary'}});
-    // fireEvent.click(submitButton);
-    // await waitFor(() =>
-      // expect(screen.getByText(/confirmed/i))
-        // .not.toBeInTheDocument()
-    // );
-  // });
 });
